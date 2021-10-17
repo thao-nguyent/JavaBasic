@@ -4,13 +4,21 @@ import java.security.SecureRandom;
 
 public class Animal {
 
-    public static int speedMax;
+    private int speed;
 
     public Animal() {
     }
 
+    public Animal(int speed) {
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return this.speed;
+    }
+
     public int speed(){
-        int randomSpeed = new SecureRandom().nextInt(speedMax);
+        int randomSpeed = new SecureRandom().nextInt(speed);
         return randomSpeed;
     }
 }

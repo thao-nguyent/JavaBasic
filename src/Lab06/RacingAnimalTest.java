@@ -1,35 +1,34 @@
 package Lab06;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class RacingAnimalTest {
-    public static void main(String[] args) {
+    //Controller
+    public static Animal getMaxSpeedAnimal(List<Animal> animals){
+        Animal winner = null;
 
-        Map<String, Integer> speedList = new HashMap<>();
-        Dog dog = new Dog();
-        int dogSpeed = dog.speed();
-        speedList.put(dog.getClass().getSimpleName(),dogSpeed);
-
-        Horse horse = new Horse();
-        int horseSpeed = horse.speed();
-        speedList.put(horse.getClass().getSimpleName(),horseSpeed);
-
-        Tiger tiger = new Tiger();
-        int tigerSpeed = tiger.speed();
-        speedList.put(tiger.getClass().getSimpleName(),tigerSpeed);
-
-        int maxSpeed = 0;
-        String winnerAnimal ="";
-
-        for (String animalName : speedList.keySet()){
-            if(speedList.get(animalName) > maxSpeed){
-                maxSpeed = speedList.get(animalName);
-                winnerAnimal = animalName;
+        for (Animal animal : animals) {
+            if(winner == null){
+                winner = animal;
+            } else {
+                if(winner.getSpeed() < animal.speed()){
+                    winner = animal;
+                }
             }
         }
 
-        System.out.println("Winner is " + winnerAnimal + ", with speed: " + maxSpeed);
+        return winner;
+    }
+    public static void main(String[] args) {
+
+        Dog dog = new Dog();
+        Horse horse = new Horse();
+        Tiger tiger = new Tiger();
+
+        Animal winner = getMaxSpeedAnimal(Arrays.asList(dog,horse,tiger));
+
+        System.out.println("Winner is " + winner.getClass().getSimpleName() + ", with speed: " + winner.getSpeed());
 
     }
 }

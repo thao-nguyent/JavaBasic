@@ -1,8 +1,11 @@
 package Lab06;
 
+import java.security.SecureRandom;
+
 public class Tiger extends Animal {
 
-    static {
-        speedMax = 100;
+    public Tiger() {
+        super(new SecureRandom().nextInt(100));
     }
+
 }

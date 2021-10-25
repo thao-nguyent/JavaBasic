@@ -1,8 +1,10 @@
 package Lab06;
 
+import java.security.SecureRandom;
+
 public class Dog extends Animal {
 
-    static {
-        speedMax = 60;
+    public Dog() {
+        super(new SecureRandom().nextInt(60));
     }
 }
